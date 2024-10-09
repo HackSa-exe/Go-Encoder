@@ -5,7 +5,10 @@ import (
 )
 
 func main() {
-
-	fmt.Println("Hello my friend")
-
+	//text := "9.11.3.9A"
+	fmt.Println([]byte("."))
 }
+
+//func (ie Nas5GSUpdateType) Encode(buffer *bytes.Buffer){
+//
+//}

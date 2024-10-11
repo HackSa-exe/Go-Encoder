@@ -3,6 +3,9 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"io"
+
+	"github.com/HewlettPackard/structex"
 )
 
 type bitfield struct {
@@ -44,13 +47,19 @@ func main() {
 }
 
 func Encode(ie nas5GSUpdateType, buffer *bytes.Buffer) {
-	//fmt.Println("Update Type: ", ie.updateTypeIEI)
-	//buffer.WriteByte(ie.updateTypeIEI)
-	//fmt.Println("Buffered Update Type: ", buffer.String())
-	buffer.WriteString("Hello")
-	buffer.WriteString("World")
-	fmt.Println(buffer)
-	//buffer.WriteByte(ie.updateTypeLength)
-	//fmt.Println("Output: ", buffer.String())
-	//buffer.WriteByte(structex.Encode(ie.bitfield))
+
+	//write first octet in buffer
+	fmt.Println("Update Type: ", ie.updateTypeIEI)
+	buffer.WriteByte(ie.updateTypeIEI)
+
+	//write second octet in buffer
+	fmt.Println("Update Type length: ", ie.updateTypeLength)
+	buffer.WriteByte(ie.updateTypeLength)
+
+	fmt.Println("Buffered Stuff ", buffer.String())
+
+	//convert bitfield and add to buffer
+	var writer io.ByteWriter
+	structex.Encode(writer, ie.bitfield)
+	fmt.Println(writer)
 }

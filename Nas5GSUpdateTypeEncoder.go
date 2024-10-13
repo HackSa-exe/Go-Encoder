@@ -1,4 +1,4 @@
-package main
+package Nas5GSUpdateTypeEncoder
 
 import (
 	"bytes"
@@ -45,8 +45,4 @@ func (ie nas5GSUpdateType) Encode(buffer *bytes.Buffer) {
 	}
 
 	fmt.Println(buffer)
-}
-
-func main() {
-
 }

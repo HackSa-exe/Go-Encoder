@@ -5,19 +5,20 @@ import (
 	"testing"
 )
 
-func TestAdd(t *testing.T) {
+// Checks the struct "nasnas5GSUpdateType" and the function "encode" with numeric values
+func TestNas5GSUpdateType(t *testing.T) {
 
-	var test nas5GSUpdateType
-	test.updateTypeIEI = 1
-	test.updateTypeLength = 2
-	test.ePS_PNB_CIoT = 0
-	test.preferred_CIoT_Network_Behaviour = 0
-	test.nG_RAN_RCU = 1
-	test.sMSrequested = 1
+	var testStruct nas5GSUpdateType
+	testStruct.updateTypeIEI = 1
+	testStruct.updateTypeLength = 2
+	testStruct.EPS_PNB_CIoT = 0
+	testStruct._5GS_PNB_CIoT = 0
+	testStruct.ng_RAN_RCU = 1
+	testStruct.smsRequested = 1
 
 	var buffer bytes.Buffer
 	bufferPtr := &buffer
 
-	test.Encode(bufferPtr)
+	testStruct.Encode(bufferPtr)
 
 }
